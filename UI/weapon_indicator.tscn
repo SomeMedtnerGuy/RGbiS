@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkflqnhweka4r"]
+
+[ext_resource type="Script" path="res://UI/weapon_indicator.gd" id="1_dubo3"]
+[ext_resource type="Texture2D" uid="uid://dy31byy5meoc7" path="res://UI/weapon_indicators_link.png" id="2_t0xyn"]
+[ext_resource type="Texture2D" uid="uid://lq818c0usefn" path="res://UI/weapon_indicators.png" id="3_sxx11"]
+
+[sub_resource type="Curve2D" id="Curve2D_6v2x3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -62, -0.420448, -62.6468, 0.420448, 62.6468, 63, 0, 0, 0, 0, 0, 0, 62, -0.420448, 61.8059, 0.420448, -61.8059, -63, 0, 0, 0, 0, 0, 0, -62)
+}
+point_count = 5
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0svkl"]
+
+[node name="WeaponIndicator" type="Node2D"]
+script = ExtResource("1_dubo3")
+
+[node name="Link" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_t0xyn")
+
+[node name="SelectedIndcator" type="Sprite2D" parent="."]
+position = Vector2(0, -62)
+scale = Vector2(0.406509, 0.406509)
+texture = ExtResource("2_t0xyn")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6v2x3")
+
+[node name="Bullet" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, -62)
+rotation = -1.5708
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/Bullet"]
+texture_filter = 1
+rotation = -1.5708
+texture = ExtResource("3_sxx11")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="BulletSpray" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-55.5815, 32.1127)
+rotation = -1.5708
+progress = 264.582
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/BulletSpray"]
+texture_filter = 1
+rotation = -1.5708
+texture = ExtResource("3_sxx11")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="Laser" type="PathFollow2D" parent="Path2D"]
+position = Vector2(55.8595, 31.9411)
+rotation = -1.5708
+progress = 132.271
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/Laser"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_0svkl")
+rotation = -1.5708
+texture = ExtResource("3_sxx11")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)

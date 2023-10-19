@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg7a7tndfpi3i"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_lekcn"]
+[ext_resource type="PackedScene" uid="uid://ctm451qqbhb5l" path="res://syncronizer.tscn" id="2_f1dtj"]
+[ext_resource type="Texture2D" uid="uid://db73ipfwted6p" path="res://background.png" id="2_h4ji0"]
+[ext_resource type="PackedScene" uid="uid://3bs0m6ibqlal" path="res://Character/character.tscn" id="3_qe364"]
+[ext_resource type="PackedScene" uid="uid://c6sk5olnsvn3a" path="res://Obstacles/asteroid_spawner.tscn" id="4_83sk1"]
+[ext_resource type="PackedScene" uid="uid://bkflqnhweka4r" path="res://UI/weapon_indicator.tscn" id="6_cvpn0"]
+[ext_resource type="FontFile" uid="uid://cnrbqo5nsy5kq" path="res://PublicPixel-z84yD.ttf" id="7_2gr5s"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_lekcn")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_h4ji0")
+centered = false
+region_enabled = true
+region_rect = Rect2(-320, -176, 2880, 1808)
+
+[node name="Synchronizer" parent="." instance=ExtResource("2_f1dtj")]
+WIRELESS_DELAY = 0.0
+_track_bpm = 140
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Character" parent="Characters" instance=ExtResource("3_qe364")]
+position = Vector2(640, 360)
+thrust_strength = 2000
+
+[node name="AsteroidSpawner" parent="." instance=ExtResource("4_83sk1")]
+
+[node name="Asteroids" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponIndicator" parent="UI" instance=ExtResource("6_cvpn0")]
+position = Vector2(1180, 116)
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 568.0
+offset_top = 54.0
+offset_right = 632.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_2gr5s")
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[connection signal="bullet_fired" from="Characters/Character" to="." method="_on_character_bullet_fired"]
+[connection signal="input_missed" from="Characters/Character" to="." method="_on_character_input_missed"]
+[connection signal="weapon_switched" from="Characters/Character" to="." method="_on_character_weapon_switched"]
+[connection signal="asteroid_spawned" from="AsteroidSpawner" to="." method="_on_asteroid_spawner_asteroid_spawned"]

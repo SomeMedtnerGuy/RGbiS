@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl8ie8fo7ukkw"]
+
+[ext_resource type="PackedScene" uid="uid://cx5bolixv7m6y" path="res://Obstacles/asteroid.tscn" id="1_3r170"]
+[ext_resource type="Texture2D" uid="uid://bilg0twhgk7va" path="res://Obstacles/asteroid_large.png" id="2_b7ta8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olwtg"]
+radius = 28.3321
+
+[node name="AsteroidLarge" instance=ExtResource("1_3r170")]
+mass = 4.0
+size = 2
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_b7ta8")
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-3.18705, 0.940498)
+shape = SubResource("CircleShape2D_olwtg")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(-3.18553, 1.22567)
+scale = Vector2(2.76875, 2.84231)

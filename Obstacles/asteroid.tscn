@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx5bolixv7m6y"]
+
+[ext_resource type="Script" path="res://Obstacles/asteroid.gd" id="1_lgqvg"]
+
+[node name="Asteroid" type="RigidBody2D"]
+max_contacts_reported = 1
+contact_monitor = true
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_lgqvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.744095, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.198425, 0.0496063)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.248033, 0.347243)
+scale = Vector2(0.7, 0.730157)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

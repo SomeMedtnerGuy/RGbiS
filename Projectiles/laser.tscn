@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dors7ioi3do7j"]
+
+[ext_resource type="Texture2D" uid="uid://bcburueb24opd" path="res://Projectiles/untitled.png" id="1_loca4"]
+[ext_resource type="Script" path="res://Projectiles/laser.gd" id="1_lt5m4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wky6m"]
+radius = 4.0
+height = 8.0
+
+[node name="Laser" type="ShapeCast2D"]
+enabled = false
+shape = SubResource("CapsuleShape2D_wky6m")
+target_position = Vector2(1470, 0)
+script = ExtResource("1_lt5m4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_loca4")
+centered = false
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 1470, 8)

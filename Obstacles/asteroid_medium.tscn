@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://duu8kk0daorni"]
+
+[ext_resource type="PackedScene" uid="uid://cx5bolixv7m6y" path="res://Obstacles/asteroid.tscn" id="1_nee8a"]
+[ext_resource type="Texture2D" uid="uid://c0c3s5c3c2aq2" path="res://Obstacles/asteroid_medium.png" id="2_c2ckl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5qvk"]
+radius = 14.1985
+
+[node name="AsteroidMedium" instance=ExtResource("1_nee8a")]
+mass = 2.0
+size = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_c2ckl")
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_j5qvk")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(-1, 1)
+scale = Vector2(1.5, 1.6)

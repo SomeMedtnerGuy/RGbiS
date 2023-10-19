@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctm451qqbhb5l"]
+
+[ext_resource type="Script" path="res://syncronizer.gd" id="1_5ypne"]
+[ext_resource type="AudioStream" uid="uid://dpdiw835cn68q" path="res://RGBIS_song1.wav" id="2_10mv1"]
+
+[node name="Synchronizer" type="Node"]
+script = ExtResource("1_5ypne")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_10mv1")
