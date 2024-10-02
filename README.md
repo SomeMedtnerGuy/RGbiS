@@ -3,7 +3,7 @@ An "Asteroids"-like game with a twist: input has to be done in sync with a song 
 
 <details>
   <summary>GIF with gameplay inside. Please do not open if you are sensitive to flashing lights.</summary>
-  ![Screencast from 10-02-2024 10_42_37 AM(1).gif](https://github.com/SomeMedtnerGuy/RGbiS/blob/main/Screencast%20from%2010-02-2024%2010_42_37%20AM(1).gif)
+  ![gameplay](https://github.com/SomeMedtnerGuy/RGbiS/blob/main/rgbis_gameplay.gif))
 </details>
 
 Controls:
